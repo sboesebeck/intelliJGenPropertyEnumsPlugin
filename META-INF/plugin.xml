@@ -1,0 +1,30 @@
+<idea-plugin version="2">
+    <name>Generate property enums</name>
+    <description>Generate emums for each property</description>
+    <resource-bundle>de.caluga.intellij.plugin.gpe.Resources</resource-bundle>
+    <version>1.0</version>
+    <vendor>Caluga.de</vendor>
+    <idea-version since-build="8000"/>
+
+    <application-components>
+        <!-- Add your application components here -->
+        <component>
+            <implementation-class>de.caluga.intellij.plugin.gpe.PsiHelper</implementation-class>
+        </component>
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="GeneratePropertyEnums" class="de.caluga.intellij.plugin.gpe.GeneratePropertyEnums">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="de.caluga.intellij.plugin.gpe">
+        <!-- Add your extensions here -->
+    </extensions>
+</idea-plugin>
