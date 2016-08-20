@@ -10,30 +10,30 @@ import com.intellij.psi.PsiClass;
 
 
 public class GeneratePropertyEnums extends EditorAction {
-	public GeneratePropertyEnums(){
-		super(new GeneratePropertyEnumsActionHandler());
-	}
-	protected GeneratePropertyEnums(EditorActionHandler defaultHandler) {
-		super(defaultHandler);
-	}
-	public void update(Editor editor, Presentation presentation, DataContext dataContext) {		
-		PsiHelper util=ApplicationManager.getApplication()
-					.getComponent(PsiHelper.class);
-		/* figure out when to display the option to generate chained accessors */
-		if(editor==null){
-			presentation.setVisible(false);
-			return;
-		}
-		PsiClass javaClass=util.getCurrentClass(editor);
-		if(javaClass==null||javaClass.isInterface()){
-			presentation.setVisible(false);
-		}else{
-			presentation.setVisible(true);
-		}
-	}
-	
 
-	
+    public GeneratePropertyEnums() {
+        super(new GeneratePropertyEnumsActionHandler());
+    }
+
+    protected GeneratePropertyEnums(EditorActionHandler defaultHandler) {
+        super(defaultHandler);
+    }
+
+    public void update(Editor editor, Presentation presentation, DataContext dataContext) {
+        PsiHelper util = ApplicationManager.getApplication()
+                .getComponent(PsiHelper.class);
+        /* figure out when to display the option to generate chained accessors */
+        if (editor == null) {
+            presentation.setVisible(false);
+            return;
+        }
+        PsiClass javaClass = util.getCurrentClass(editor);
+        if (javaClass == null || javaClass.isInterface()) {
+            presentation.setVisible(false);
+        } else {
+            presentation.setVisible(true);
+        }
+    }
 
 
 }

@@ -1,12 +1,12 @@
 package de.caluga.intellij.plugin.gpe;
 
+
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiManager;
@@ -14,19 +14,20 @@ import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings({"ConstantConditions"})
 public class PsiHelper implements ApplicationComponent {
-	public PsiHelper() {
-	}
 
-	public void initComponent() {
-	}
+    public PsiHelper() {
+    }
 
-	public void disposeComponent() {
-	}
+    public void initComponent() {
+    }
 
-	@NotNull
-	public String getComponentName() {
-		return getClass().getSimpleName();
-	}
+    public void disposeComponent() {
+    }
+
+    @NotNull
+    public String getComponentName() {
+        return getClass().getSimpleName();
+    }
 
     public String convertCamelCase(String n) {
         StringBuffer b = new StringBuffer();
@@ -39,6 +40,7 @@ public class PsiHelper implements ApplicationComponent {
         b.append(n.substring(n.length() - 1));
         return b.toString();
     }
+
     public String createCamelCase(String n, boolean capitalize) {
         n = n.toLowerCase();
         String f[] = n.split("_");
@@ -56,30 +58,30 @@ public class PsiHelper implements ApplicationComponent {
         return ret;
     }
 
-	public String capitalize(String fieldName) {
-		return fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-	}
+    public String capitalize(String fieldName) {
+        return fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+    }
 
 
-	public PsiClass getCurrentClass(final Editor editor){
-		if(editor==null){
-			return null;
-		}
-		PsiManager psiManager=PsiManager.getInstance(editor.getProject());
-		VirtualFile vFile = FileDocumentManager.getInstance().getFile(editor.getDocument());
-		PsiFile psiFile=psiManager.findFile(vFile);
-		if(!(psiFile instanceof PsiJavaFile)){
-			return null;
-		}
-		PsiJavaFile javaFile=(PsiJavaFile)psiFile;
-		PsiElement element = javaFile.findElementAt(editor.getCaretModel().getOffset());
-		while(!(element instanceof PsiClass)&&element!=null){
-			element=element.getParent();
-		}
-		if(element==null){
-			return null;
-		}else{
-			return (PsiClass)element;
-		}
-	}
+    public PsiClass getCurrentClass(final Editor editor) {
+        if (editor == null) {
+            return null;
+        }
+        PsiManager psiManager = PsiManager.getInstance(editor.getProject());
+        VirtualFile vFile = FileDocumentManager.getInstance().getFile(editor.getDocument());
+        PsiFile psiFile = psiManager.findFile(vFile);
+        if (!(psiFile instanceof PsiJavaFile)) {
+            return null;
+        }
+        PsiJavaFile javaFile = (PsiJavaFile) psiFile;
+        PsiElement element = javaFile.findElementAt(editor.getCaretModel().getOffset());
+        while (!(element instanceof PsiClass) && element != null) {
+            element = element.getParent();
+        }
+        if (element == null) {
+            return null;
+        } else {
+            return (PsiClass) element;
+        }
+    }
 }

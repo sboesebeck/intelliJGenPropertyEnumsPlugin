@@ -1,0 +1,52 @@
+<idea-plugin version="3">
+    <id>de.caluga.intellij.plugin.gpe</id>
+    <name>Fields to Enumeration Generator</name>
+    <version>1.0</version>
+    <vendor email="morphium-discuss@googlegroups.com" url="https://github.com/sboesebeck/intelliJGenPropertyEnumsPlugin">
+        Stephan Bösebeck AND Free Universe Games
+    </vendor>
+
+    <resource-bundle>de.caluga.intellij.plugin.gpe.Resources</resource-bundle>
+
+    <description><![CDATA[
+      <p>This plugin will generate an inner enumeration to reflect all available fields. Just use "ALT + INSERT" and select "Generate Property Enums"</p>
+
+      <ul>
+      <li> This is related to the project moprhium [https://github.com/sboesebeck/morphium] the caching mongodb POJO Object Mapper. When querying mongodb, you usually need to define the field you are looking for as string - which kind of breaks the whole abstraction.</li>
+      <ul>
+
+      <p>
+      Original Author is Stephan Bösebeck (sboesebeck)
+      <br>
+      Publisher is Daniel Merwin (Free Universe Games)
+      </p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      - 08/20/2016 Update to current IDE and prepared for Jetbrains Upload.<br>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="141.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <application-components>
+        <!-- Add your application components here -->
+        <component>
+            <implementation-class>de.caluga.intellij.plugin.gpe.PsiHelper</implementation-class>
+        </component>
+    </application-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="GeneratePropertyEnums" class="de.caluga.intellij.plugin.gpe.GeneratePropertyEnums">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+    </actions>
+
+</idea-plugin>
