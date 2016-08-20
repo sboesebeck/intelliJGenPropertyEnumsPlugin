@@ -8,3 +8,5 @@
 out/*
 /IntellijFieldToEnumerationGenerator.iml
 /.idea/
+/GeneratePropertyEnums.iml
+/IntelliJFieldToEnumerationGenerator.iml
