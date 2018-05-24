@@ -1,4 +1,4 @@
-<idea-plugin version="3">
+<idea-plugin>
     <id>de.caluga.intellij.plugin.gpe</id>
     <name>Fields to Enumeration Generator</name>
     <version>1.0</version>
