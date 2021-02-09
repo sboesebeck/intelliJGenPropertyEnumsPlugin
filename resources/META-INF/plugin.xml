@@ -1,30 +1,36 @@
 <idea-plugin>
-    <id>de.caluga.intellij.plugin.gpe</id>
-    <name>Fields to Enumeration Generator</name>
-    <version>1.0</version>
+    <id>de.caluga.intellij.plugin.propertyEnums</id>
+    <name>Fields / Properties to Enumeration Generator</name>
+    <version>1.1</version>
     <vendor email="morphium-discuss@googlegroups.com" url="https://github.com/sboesebeck/intelliJGenPropertyEnumsPlugin">
-        Stephan Bösebeck AND Free Universe Games
+        Stephan Bösebeck
     </vendor>
 
     <resource-bundle>de.caluga.intellij.plugin.gpe.Resources</resource-bundle>
 
     <description><![CDATA[
-      <p>This plugin will generate an inner enumeration to reflect all available fields. Just use "ALT + INSERT" and select "Generate Property Enums"</p>
+      <p>This plugin will generate an inner enumeration to reflect all available fields. Just use "ALT + INSERT" (or CMD-N depending on your shortcut settings)
+       and select "Generate Property Enums"</p>
 
       <ul>
-      <li> This is related to the project moprhium [https://github.com/sboesebeck/morphium] the caching mongodb POJO Object Mapper. When querying mongodb, you usually need to define the field you are looking for as string - which kind of breaks the whole abstraction.</li>
+      <li> This is related to the project moprhium [https://github.com/sboesebeck/morphium] the caching mongodb POJO Object Mapper.
+      When querying mongodb, you usually need to define the field you are looking for as string - which kind of breaks the whole abstraction.</li>
       <ul>
 
       <p>
       Author is Stephan Bösebeck (sboesebeck)
 
+      <p>special thanks to Daniel Merwin (Free Universe Games) who helped with previous versions
+
     ]]></description>
 
     <change-notes><![CDATA[
       - 08/20/2016 Update to current IDE and prepared for Jetbrains Upload.<br>
+      - 09/02/2021 switch to jdk11, prepare vfor upload to Jetbrains Plugin repository. needed to change Plugin ID<br>
     ]]>
     </change-notes>
 
+    <depends>com.intellij.modules.java</depends>
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
     <idea-version since-build="203"/>
 
