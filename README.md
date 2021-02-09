@@ -22,8 +22,9 @@ your java class, in the example below it would be `identifier`).
 Although both ways to specify a field in a query are possible with morphium (you can use both `query.f("_id")`
 and `query.f("identifier")`), it is still error prone and there is no help from the IDE, like auto completion.
 
-Morphium supports queries with Enums as field names. The idea is, to add a list of field names as enums for every
-entity. Problem is: you'd need to type that. Hence I wrote this little plugin to make things a bit easier...
+Morphium supports queries with enum values as field names. To get the best out of this feature, you need to add an enum
+for every field in your entity. Problem is: you'd need to type that. Hence, I wrote this little plugin to make things a
+bit easier...
 
 It will create an Enum called `Fields` for all properties in your entity. So you can easily use them in Morphium
 queries:
@@ -53,5 +54,39 @@ When querying mongo with morphium you would use it like this:
 ```
 
 This makes it way less error prone, and you can use IntelliJ auto completion to access your fields.
+
+## Property names
+
+Morphium also supports naming of fields, so if you do not like the default name that morphium generates, you can change
+that. This would cause your queries to fail. Let's take the example from above and change the name for `lastName`:
+
+```java
+
+@Entity
+public class Person {
+    @Id
+    private ObjectId identifier;
+    private String firstName;
+    @Property("surname")
+    private String lastName;
+    //getter and Setter here
+
+    //generated fields
+    public enum Fields {firstName, identifier, lastName}
+}
+```
+
+now, in MongoDB each Person will have a field called `surname` containing the lastName. When creating a query for
+mongodb directly , you need to define how it is called in the database. With morphium you can just use the enum. The
+query from above will work in both cases.
+
+_Attention_: migration of data is not part of morphium. If you rename an already existing field, this will likely cause
+problems
+
+## updating / refactoring
+
+To update your fields, whenever you change property names, you should just remove the `Fields` enum from your entity and
+re-generate it using the plugin. This way you will get compiler errors, for every place you used a field name that was
+renamed.
 
 See [https://github.com/sboesebeck/morphium] for more information.
