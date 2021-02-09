@@ -9,6 +9,9 @@ import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElementFactory;
 import com.intellij.psi.PsiField;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class GeneratePropertyEnumsActionHandler extends EditorWriteActionHandler {
 
     @Override
@@ -22,7 +25,9 @@ public class GeneratePropertyEnumsActionHandler extends EditorWriteActionHandler
 
         PsiClass psiCls = psiElementFactory.createEnum("Fields");
 
-        for (PsiField field : clazz.getFields()) {
+        PsiField[] fields = clazz.getFields();
+        Arrays.sort(fields, (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
+        for (PsiField field : fields) {
             String fieldName = field.getName();
             String methodNameSuffix = util.capitalize(fieldName);
             String fieldType = field.getType().getCanonicalText();
