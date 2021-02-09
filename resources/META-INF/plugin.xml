@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>de.caluga.intellij.plugin.propertyEnums</id>
     <name>Fields / Properties to Enumeration Generator</name>
-    <version>1.2</version>
+    <version>1.3</version>
     <vendor email="morphium-discuss@googlegroups.com" url="https://github.com/sboesebeck/intelliJGenPropertyEnumsPlugin">
         Stephan Bösebeck
     </vendor>
@@ -23,6 +23,64 @@
       Author is Stephan Bösebeck (sboesebeck)</p>
 
       <p>special thanks to Daniel Merwin (Free Universe Games) who helped with previous versions</p>
+
+      <h2>Example:</h2>
+<pre>
+
+@Entity
+public class Person {
+    @Id
+    private ObjectId identifier;
+    private String firstName;
+    private String lastName;
+    //getter and Setter here
+
+    //generated fields
+    public enum Fields {firstName, identifier, lastName}
+}
+      </pre>
+
+When querying mongo with morphium you would use it like this:
+
+<pre>
+   Query<Person> p=morphium.createQuery(Person.class);
+        p=p.f(Person.Fields.firstName).eq("John");
+        p=p.f(Person.Fields.lastName).eq("Doe");
+        List<Person> lst=p.asList();
+      </pre>
+
+this also works, when the name of the field in Mongo is changed:
+<pre>
+
+@Entity
+public class Person {
+    @Id
+    private ObjectId identifier;
+    private String firstName;
+    @Property(fieldName="surname")
+    private String lastName;
+    //getter and Setter here
+
+    //generated fields
+    public enum Fields {firstName, identifier, lastName}
+}
+</pre>
+
+now, in MongoDB each <em>Person</em> will have a field called <em>surname</em> containing the lastName. When creating a query for
+mongodb directly, you need to define how it is called in the database. With morphium you can just use the enum. The
+query from above will work in both cases.
+<br>
+<em>Attention:</em> migration of data is not part of morphium. If you rename an already existing field, this will likely cause
+problems
+<br>
+<h2>updating / refactoring</h2>
+
+To update your fields, whenever you change property names, you should just remove the <em>Fields</em> enum from your entity and
+re-generate it using the plugin. This way you will get compiler errors, for every place you used a field name that was
+renamed.
+
+See <a href="https://github.com/sboesebeck/morphium">morphium github</a> or the project page <a href="https://caluge.de">caluga.de</a> for more information.
+Latest Morphium Documentation can be found <a href="https://github.com/sboesebeck/morphium/blob/master/Morphium%20Documentation.md">here</a>
 
     ]]></description>
 
