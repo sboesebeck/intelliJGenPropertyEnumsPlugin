@@ -4,10 +4,8 @@
 *.jar
 *.war
 *.ear
-
+out
 out/*
-/IntellijFieldToEnumerationGenerator.iml
-/.idea/
+.idea/
 /GeneratePropertyEnums.iml
-/IntelliJFieldToEnumerationGenerator.iml
 target/*
