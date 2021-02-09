@@ -67,7 +67,7 @@ public class Person {
     @Id
     private ObjectId identifier;
     private String firstName;
-    @Property("surname")
+    @Property(fieldName = "surname")
     private String lastName;
     //getter and Setter here
 

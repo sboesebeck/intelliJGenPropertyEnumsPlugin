@@ -9,18 +9,20 @@
     <resource-bundle>de.caluga.intellij.plugin.gpe.Resources</resource-bundle>
 
     <description><![CDATA[
-      <p>This plugin will generate an inner enumeration to reflect all available fields. Just use "ALT + INSERT" (or CMD-N depending on your shortcut settings)
-       and select "Generate Property Enums"</p>
 
-      <ul>
-      <li> This is related to the project moprhium [https://github.com/sboesebeck/morphium] the caching mongodb POJO Object Mapper.
-      When querying mongodb, you usually need to define the field you are looking for as string - which kind of breaks the whole abstraction.</li>
-      <ul>
+    <p>This is related to the project <a href="https://github.com/sboesebeck/morphium">morphium</a> the caching mongodb POJO Object Mapper
+    and messaging system. When querying mongodb, you usually need to define the field you are looking for as string - which
+    kind of breaks the whole abstraction.</p>
+    <p>with <a href="https://github.com/sboesebeck/morphium">morphium</a> it is possible to just use the java names (properties of POJOs) when accessing mongo. But even that is
+      just a String, which causes problems with migration etc.</p>
+    <p>Using enums avoids most of those problems. This plugin will generate an Enum <i>Fields</i> containing one entry
+      for each property of the POJO at the end of the class. Just use "ALT + INSERT" (or "CMD-N"
+       depending on your shortcut settings for the Generate Dialog) and select "Generate Property Enums"</p>
 
       <p>
-      Author is Stephan Bösebeck (sboesebeck)
+      Author is Stephan Bösebeck (sboesebeck)</p>
 
-      <p>special thanks to Daniel Merwin (Free Universe Games) who helped with previous versions
+      <p>special thanks to Daniel Merwin (Free Universe Games) who helped with previous versions</p>
 
     ]]></description>
 
@@ -28,6 +30,7 @@
       - 08/20/2016 Update to current IDE and prepared for Jetbrains Upload.<br>
       - 09/02/2021 switch to jdk11, prepare for upload to Jetbrains Plugin repository. needed to change Plugin ID<br>
       - 09/02/2021 making the result enum sorted alphabetically<br>
+      - 10/02/2021 adding a bit more documentation<br>
     ]]>
     </change-notes>
 
