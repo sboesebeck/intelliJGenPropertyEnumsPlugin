@@ -26,7 +26,7 @@
 
     <change-notes><![CDATA[
       - 08/20/2016 Update to current IDE and prepared for Jetbrains Upload.<br>
-      - 09/02/2021 switch to jdk11, prepare vfor upload to Jetbrains Plugin repository. needed to change Plugin ID<br>
+      - 09/02/2021 switch to jdk11, prepare for upload to Jetbrains Plugin repository. needed to change Plugin ID<br>
     ]]>
     </change-notes>
 
