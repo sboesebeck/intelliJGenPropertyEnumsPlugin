@@ -1,27 +1,17 @@
 package de.caluga.intellij.plugin.gpe;
 
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.NamedComponent;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiJavaFile;
-import com.intellij.psi.PsiManager;
+import com.intellij.psi.*;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings({"ConstantConditions"})
-public class PsiHelper implements ApplicationComponent {
+public class PsiHelper implements NamedComponent {
 
     public PsiHelper() {
-    }
-
-    public void initComponent() {
-    }
-
-    public void disposeComponent() {
     }
 
     @NotNull
