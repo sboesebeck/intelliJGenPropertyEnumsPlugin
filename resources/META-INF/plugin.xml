@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>de.caluga.intellij.plugin.propertyEnums</id>
     <name>Fields / Properties to Enumeration Generator</name>
-    <version>1.3</version>
+    <version>1.4</version>
     <vendor email="morphium-discuss@googlegroups.com" url="https://github.com/sboesebeck/intelliJGenPropertyEnumsPlugin">
         Stephan Bösebeck
     </vendor>
@@ -75,9 +75,9 @@ problems
 <br>
 <h2>updating / refactoring</h2>
 
-To update your fields, whenever you change property names, you should just remove the <em>Fields</em> enum from your entity and
-re-generate it using the plugin. This way you will get compiler errors, for every place you used a field name that was
-renamed.
+To update your fields, whenever you change property names, you just run the plugin, it will update your <em>Fields</em> enum according to your changes and add missing
+and remove elements from <em>Fields</em> accordingly.
+This way you will get compiler errors, for every place you used a field name that was renamed.
 
 See <a href="https://github.com/sboesebeck/morphium">morphium github</a> or the project page <a href="https://caluge.de">caluga.de</a> for more information.
 Latest Morphium Documentation can be found <a href="https://github.com/sboesebeck/morphium/blob/master/Morphium%20Documentation.md">here</a>
@@ -89,6 +89,7 @@ Latest Morphium Documentation can be found <a href="https://github.com/sboesebec
       - 09/02/2021 switch to jdk11, prepare for upload to Jetbrains Plugin repository. needed to change Plugin ID<br>
       - 09/02/2021 making the result enum sorted alphabetically<br>
       - 10/02/2021 adding a bit more documentation<br>
+      - 11/02/2021 making the plugin be able to update an existing <em>Fields</em><br>
     ]]>
     </change-notes>
 

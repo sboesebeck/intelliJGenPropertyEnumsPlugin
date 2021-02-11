@@ -22,8 +22,20 @@ public class GeneratePropertyEnumsActionHandler extends EditorWriteActionHandler
         JavaPsiFacade psiFacade = JavaPsiFacade.getInstance(editor.getProject());
         PsiElementFactory psiElementFactory = psiFacade.getElementFactory();
         PsiClass clazz = util.getCurrentClass(editor);
+        if (clazz.isEnum() && clazz.getName().equals("Fields")) {
+            clazz = clazz.getContainingClass();
+        }
+        PsiClass psiCls = null;
 
-        PsiClass psiCls = psiElementFactory.createEnum("Fields");
+        PsiClass existing = null;
+        for (PsiClass c : clazz.getAllInnerClasses()) {
+            if (c.isEnum() && c.getName() != null && c.getName().equals("Fields")) {
+                existing = c;
+                break;
+            }
+        }
+
+        psiCls = psiElementFactory.createEnum("Fields");
 
         PsiField[] fields = clazz.getFields();
         Arrays.sort(fields, (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
@@ -35,7 +47,11 @@ public class GeneratePropertyEnumsActionHandler extends EditorWriteActionHandler
             psiCls.add(psiElementFactory.createEnumConstantFromText(field.getName(), psiCls));
 
         }
-        clazz.add(psiCls);
+        if (existing == null) {
+            clazz.add(psiCls);
+        } else {
+            existing.replace(psiCls);
+        }
     }
 
 }
