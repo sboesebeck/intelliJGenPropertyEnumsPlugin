@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>de.caluga.intellij.plugin.propertyEnums</id>
     <name>Fields / Properties to Enumeration Generator</name>
-    <version>1.4</version>
+    <version>1.5</version>
     <vendor email="morphium-discuss@googlegroups.com" url="https://github.com/sboesebeck/intelliJGenPropertyEnumsPlugin">
         Stephan Bösebeck
     </vendor>
@@ -90,6 +90,7 @@ Latest Morphium Documentation can be found <a href="https://github.com/sboesebec
       - 09/02/2021 making the result enum sorted alphabetically<br>
       - 10/02/2021 adding a bit more documentation<br>
       - 11/02/2021 making the plugin be able to update an existing <em>Fields</em><br>
+      - 12/02/2021 making the plugin create entries for all fields, including inherited ones<br>
     ]]>
     </change-notes>
 

@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class GeneratePropertyEnumsActionHandler extends EditorWriteActionHandler {
 
@@ -26,19 +27,28 @@ public class GeneratePropertyEnumsActionHandler extends EditorWriteActionHandler
             clazz = clazz.getContainingClass();
         }
         PsiClass psiCls = null;
+        PsiField[] fieldarray = clazz.getAllFields();
+        List<PsiField> fields = Arrays.asList(fieldarray);
+
 
         PsiClass existing = null;
         for (PsiClass c : clazz.getAllInnerClasses()) {
-            if (c.isEnum() && c.getName() != null && c.getName().equals("Fields")) {
+            if (c.isEnum() && c.getName() != null && c.getName().equals("Fields") && c.getContainingClass().equals(clazz)) {
                 existing = c;
                 break;
+//            } else if (c.isEnum() && c.getName() != null && c.getName().equals("Fields") && !c.getContainingClass().equals(clazz)) {
+//                //subclass...
+//                for (PsiField f : c.getContainingClass().getFields()) {
+//
+//                    fields.add(f);
+//
+//                }
             }
         }
 
         psiCls = psiElementFactory.createEnum("Fields");
+        fields.sort((o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
 
-        PsiField[] fields = clazz.getFields();
-        Arrays.sort(fields, (o1, o2) -> o1.getName().compareToIgnoreCase(o2.getName()));
         for (PsiField field : fields) {
 //            String fieldName = field.getName();
 //            String methodNameSuffix = util.capitalize(fieldName);
