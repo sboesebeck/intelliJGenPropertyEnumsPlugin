@@ -9,3 +9,4 @@ out/*
 .idea/
 /GeneratePropertyEnums.iml
 target/*
+.DS_Store
