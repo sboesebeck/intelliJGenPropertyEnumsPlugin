@@ -1,7 +1,7 @@
 <idea-plugin>
-    <id>de.caluga.intellij.plugin.propertyEnums</id>
+    <id>de.caluga.ide.plugin.propertyEnums</id>
     <name>Fields / Properties to Enumeration Generator</name>
-    <version>1.5</version>
+    <version>1.6</version>
     <vendor email="morphium-discuss@googlegroups.com" url="https://github.com/sboesebeck/intelliJGenPropertyEnumsPlugin">
         Stephan Bösebeck
     </vendor>
